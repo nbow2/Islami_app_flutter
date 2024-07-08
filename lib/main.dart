@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:islami_app/My_theme/my_theme_data.dart';
 import 'home/homescreen.dart';
 import 'home/temp.dart';
 
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Islami App',
+      theme: MyThemeData.lightMode,
       // Define the initial route of your application
-      initialRoute: Quran.routeName,
+      initialRoute: HomeScreen.routeName,
       // Define named routes
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
