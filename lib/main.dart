@@ -2,6 +2,8 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:islami_app/My_theme/my_theme_data.dart';
+import 'package:islami_app/home/book/book_Details_screen.dart';
+import 'package:islami_app/home/quran/sura_Details_screen.dart';
 import 'home/homescreen.dart';
 import 'home/temp.dart';
 
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
       // Define named routes
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
+        SuraDetailsScreen.routeName: (context) => SuraDetailsScreen(),
+        BookDetailsScreen.routeName: (context) => BookDetailsScreen(),
         Quran.routeName: (context) => Quran(),
       },
     );
