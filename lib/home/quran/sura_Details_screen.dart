@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
-import 'package:islami_app/My_theme/my_theme_data.dart';
 import 'package:islami_app/widgets/item_sura_detials.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'Sura_Details';
+
+  const SuraDetailsScreen({super.key});
 
   @override
   State<SuraDetailsScreen> createState() => _SuraDetailsScreenState();

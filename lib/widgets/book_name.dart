@@ -1,15 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/home/book/book_Details_screen.dart';
 import 'package:islami_app/home/book/book_tap.dart';
-import 'package:islami_app/home/quran/sura_Details_screen.dart';
 
 class BookName extends StatelessWidget {
   Hadeth hadeth;
 
   //late String title ;
 
-  BookName({required this.hadeth});
+  BookName({super.key, required this.hadeth});
 
   @override
   Widget build(BuildContext context) {

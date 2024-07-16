@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ItemBookDetails extends StatelessWidget {
   String content;
 
-  ItemBookDetails({required this.content});
+  ItemBookDetails({super.key, required this.content});
 
   @override
   Widget build(BuildContext context) {

@@ -1,42 +1,80 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
 
 class SebhaTap extends StatefulWidget {
+  const SebhaTap({super.key});
+
   @override
   _SebhaTapState createState() => _SebhaTapState();
 }
 
-class _SebhaTapState extends State<SebhaTap> {
+class _SebhaTapState extends State<SebhaTap>
+    with SingleTickerProviderStateMixin {
   int _counter = 0;
+  late AnimationController _controller;
+  List<String> duea = [
+    'سبحان الله',
+    'الله اكبر',
+    'لا أله ألا الله',
+    'استغفر الله',
+    'الحمدالله'
+  ];
+  int dueaIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   void _incrementCounter() {
     setState(() {
       _counter++;
+      if (_counter % 33 == 0) {
+        dueaIndex = (dueaIndex + 1) % duea.length;
+      }
     });
+    _controller.forward(from: 0.0); // Restart the animation
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.only(top: 40.0, bottom: 0.0),
-            child: Column(
-              children: [
-                Image.asset('assets/images/sebha_logo.png'),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.49,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned(
+                    top: 0,
+                    left: 100,
+                    child: Image.asset('assets/images/head_seb7a.png'),
+                  ),
+                  RotationTransition(
+                    turns: Tween(begin: 0.0, end: 0.50).animate(_controller),
+                    child: Image.asset('assets/images/body_seb7a.png'),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Center(
+            Center(
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16.0),
                 ),
-                padding: EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -44,12 +82,12 @@ class _SebhaTapState extends State<SebhaTap> {
                       'عدد التسبيحات',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                           vertical: 23.0, horizontal: 20.0),
                       decoration: BoxDecoration(
-                        color: Color(0xffd4af80),
+                        color: const Color(0xffd4af80),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Text(
@@ -57,24 +95,24 @@ class _SebhaTapState extends State<SebhaTap> {
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: _incrementCounter,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 7.0, vertical: 12.0),
-                        child: Text(
-                          'سبحان الله',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primaryLightColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 7.0, vertical: 12.0),
+                        child: Text(
+                          duea[dueaIndex],
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
                         ),
                       ),
                     ),
@@ -82,8 +120,8 @@ class _SebhaTapState extends State<SebhaTap> {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

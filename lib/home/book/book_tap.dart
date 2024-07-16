@@ -4,6 +4,8 @@ import 'package:islami_app/My_theme/app_colors.dart';
 import 'package:islami_app/widgets/book_name.dart';
 
 class BookTap extends StatefulWidget {
+  const BookTap({super.key});
+
   @override
   State<BookTap> createState() => _BookTapState();
 }

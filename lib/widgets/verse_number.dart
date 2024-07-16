@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class VerseNumber extends StatelessWidget {
   int Number;
 
-  VerseNumber({required this.Number});
+  VerseNumber({super.key, required this.Number});
 
   @override
   Widget build(BuildContext context) {

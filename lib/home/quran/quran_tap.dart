@@ -25,9 +25,9 @@ class QuranTap extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Container(
+              const SizedBox(
                 height: 24,
-                child: const VerticalDivider(
+                child: VerticalDivider(
                   color: AppColors.primaryLightColor,
                   thickness: 3,
                 ),

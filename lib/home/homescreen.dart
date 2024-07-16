@@ -8,6 +8,8 @@ import 'package:islami_app/home/sebha/sebha_tap.dart';
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home_screen';
 
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -41,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 selectedIndex = index;
                 setState(() {});
               },
-              items: [
+              items: const [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/icon_quran.png')),
                     label: 'Quran'),

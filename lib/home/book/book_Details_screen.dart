@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
-import 'package:islami_app/My_theme/my_theme_data.dart';
 import 'package:islami_app/home/book/book_tap.dart';
 import 'package:islami_app/widgets/item_book_detials.dart';
-import 'package:islami_app/widgets/item_sura_detials.dart';
 
 class BookDetailsScreen extends StatefulWidget {
   static const String routeName = 'Book_Details';
+
+  const BookDetailsScreen({super.key});
 
   @override
   State<BookDetailsScreen> createState() => _BookDetailsScreenState();
