@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
 import 'package:islami_app/widgets/sura_name.dart';
 import 'package:islami_app/widgets/verse_number.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranTap extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +23,7 @@ class QuranTap extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Sura Name',
+                  AppLocalizations.of(context)!.sura_names,
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -34,7 +37,7 @@ class QuranTap extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  'Verses Num',
+                  AppLocalizations.of(context)!.verses,
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),

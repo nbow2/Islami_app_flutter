@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SebhaTap extends StatefulWidget {
   const SebhaTap({super.key});
@@ -52,7 +53,7 @@ class _SebhaTapState extends State<SebhaTap>
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.49,
               child: Stack(
                 alignment: Alignment.center,
@@ -79,7 +80,7 @@ class _SebhaTapState extends State<SebhaTap>
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'عدد التسبيحات',
+                      AppLocalizations.of(context)!.number_of_praises,
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const SizedBox(height: 10),

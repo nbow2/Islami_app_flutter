@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
 import 'package:islami_app/home/book/book_tap.dart';
 import 'package:islami_app/widgets/item_book_detials.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BookDetailsScreen extends StatefulWidget {
   static const String routeName = 'Book_Details';
@@ -27,7 +28,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
       Scaffold(
         appBar: AppBar(
           title: Text(
-            'Islami',
+            AppLocalizations.of(context)!.islami,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RadioTap extends StatelessWidget {
   const RadioTap({super.key});
@@ -20,7 +21,7 @@ class RadioTap extends StatelessWidget {
               // Update the path to your radio image
               const SizedBox(height: 20),
               Text(
-                'إذاعة القرآن الكريم',
+                AppLocalizations.of(context)!.quran_radio,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 20),

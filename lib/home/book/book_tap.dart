@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
 import 'package:islami_app/widgets/book_name.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BookTap extends StatefulWidget {
   const BookTap({super.key});
@@ -35,7 +36,7 @@ class _BookTapState extends State<BookTap> {
             children: [
               Expanded(
                 child: Text(
-                  'Book Name',
+                  AppLocalizations.of(context)!.hadith_number,
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
