@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+[![Watch the video]([/watch?v=_5tFXJQIzi4](https://kappa.lol/6NthH))
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
