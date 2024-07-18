@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
 import 'package:islami_app/home/book/book_tap.dart';
+import 'package:islami_app/provider/config_provider.dart';
 import 'package:islami_app/widgets/item_book_detials.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,10 +19,16 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as Hadeth;
+    var themeprovider = Provider.of<ConfigThemeProvider>(context);
 
     return Stack(children: [
-      Image.asset(
+      themeprovider.IsLightMode() ? Image.asset(
         'assets/images/main_bgimage.png',
+        width: double.infinity,
+        height: double.infinity,
+        fit: BoxFit.fill,
+      ): Image.asset(
+        'assets/images/bg_dark.png',
         width: double.infinity,
         height: double.infinity,
         fit: BoxFit.fill,
@@ -38,15 +46,8 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
             horizontal: MediaQuery.of(context).size.height * 0.03,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: themeprovider.IsLightMode() ? AppColors.WhiteColor: AppColors.primaryDarkColor,
             borderRadius: BorderRadius.circular(50.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                spreadRadius: 3.0,
-                blurRadius: 1.0,
-              )
-            ],
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -60,8 +61,9 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const Divider(
-                  color: AppColors.primaryLightColor,
+                 Divider(
+                  color: themeprovider.IsLightMode() ?
+                  AppColors.primaryLightColor : AppColors.yellowColor,
                   thickness: 1.30,
                   indent: 20,
                   endIndent: 20,

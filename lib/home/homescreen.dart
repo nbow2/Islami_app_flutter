@@ -6,6 +6,8 @@ import 'package:islami_app/home/quran/quran_tap.dart';
 import 'package:islami_app/home/radio/radio_top.dart';
 import 'package:islami_app/home/sebha/sebha_tap.dart';
 import 'package:islami_app/home/settings/settings_tap.dart';
+import 'package:islami_app/provider/config_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home_screen';
@@ -21,10 +23,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var themeprovider = Provider.of<ConfigThemeProvider>(context);
     return Stack(
       children: [
+        themeprovider.IsLightMode()?
         Image.asset(
           'assets/images/main_bgimage.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ): Image.asset(
+          'assets/images/bg_dark.png',
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
@@ -38,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           bottomNavigationBar: Theme(
             data: Theme.of(context)
-                .copyWith(canvasColor: AppColors.primaryLightColor),
+                .copyWith(canvasColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor),
             child: BottomNavigationBar(
               currentIndex: selectedIndex,
               onTap: (index) {

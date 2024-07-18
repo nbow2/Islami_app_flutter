@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/provider/config_provider.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTap extends StatefulWidget {
   const SebhaTap({super.key});
@@ -49,6 +51,7 @@ class _SebhaTapState extends State<SebhaTap>
 
   @override
   Widget build(BuildContext context) {
+    var themeprovider = Provider.of<ConfigThemeProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -61,11 +64,15 @@ class _SebhaTapState extends State<SebhaTap>
                   Positioned(
                     top: 0,
                     left: 100,
-                    child: Image.asset('assets/images/head_seb7a.png'),
+                    child: themeprovider.IsLightMode() ?
+                    Image.asset('assets/images/head_seb7a.png'):
+                    Image.asset('assets/images/head_seb7a_dark.png'),
                   ),
                   RotationTransition(
                     turns: Tween(begin: 0.0, end: 0.50).animate(_controller),
-                    child: Image.asset('assets/images/body_seb7a.png'),
+                    child:themeprovider.IsLightMode() ?
+                    Image.asset('assets/images/body_seb7a.png'):
+                    Image.asset('assets/images/body_seb7a_dark.png'),
                   ),
                 ],
               ),
@@ -81,14 +88,15 @@ class _SebhaTapState extends State<SebhaTap>
                   children: [
                     Text(
                       AppLocalizations.of(context)!.number_of_praises,
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 23.0, horizontal: 20.0),
                       decoration: BoxDecoration(
-                        color: const Color(0xffd4af80),
+                        color: themeprovider.IsLightMode() ?
+                                AppColors.primaryLightColor: AppColors.primaryDarkColor,
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Text(
@@ -100,7 +108,8 @@ class _SebhaTapState extends State<SebhaTap>
                     ElevatedButton(
                       onPressed: _incrementCounter,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryLightColor,
+                        backgroundColor: themeprovider.IsLightMode() ?
+                        AppColors.primaryLightColor: AppColors.yellowColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -110,8 +119,9 @@ class _SebhaTapState extends State<SebhaTap>
                             horizontal: 7.0, vertical: 12.0),
                         child: Text(
                           duea[dueaIndex],
-                          style: const TextStyle(
-                              color: Colors.white,
+                          style:  TextStyle(
+                              color: themeprovider.IsLightMode() ?
+                                  AppColors.WhiteColor: AppColors.BlackColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
                         ),

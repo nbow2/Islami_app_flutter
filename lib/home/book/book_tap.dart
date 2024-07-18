@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/My_theme/app_colors.dart';
+import 'package:provider/provider.dart';
 import 'package:islami_app/widgets/book_name.dart';
+import 'package:islami_app/My_theme/app_colors.dart';
+import 'package:islami_app/provider/config_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BookTap extends StatefulWidget {
@@ -22,13 +24,17 @@ class _BookTapState extends State<BookTap> {
 
   @override
   Widget build(BuildContext context) {
+
+    var themeprovider = Provider.of<ConfigThemeProvider>(context);
+
     return Container(
       color: Colors.transparent,
       child: Column(
         children: [
           Image.asset('assets/images/book_icon.png'),
-          const Divider(
-            color: AppColors.primaryLightColor,
+           Divider(
+            color: themeprovider.IsLightMode() ?
+            AppColors.primaryLightColor:AppColors.yellowColor,
             thickness: 3,
           ),
           Row(
@@ -37,21 +43,23 @@ class _BookTapState extends State<BookTap> {
               Expanded(
                 child: Text(
                   AppLocalizations.of(context)!.hadith_number,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center,
                 ),
               ),
             ],
           ),
-          const Divider(
-            color: AppColors.primaryLightColor,
+           Divider(
+            color: themeprovider.IsLightMode() ?
+            AppColors.primaryLightColor:AppColors.yellowColor,
             thickness: 3,
           ),
           hadathList.isEmpty
               ? Center(
                   heightFactor: MediaQuery.of(context).size.height * 0.01,
-                  child: const CircularProgressIndicator(
-                    color: AppColors.primaryLightColor,
+                  child: CircularProgressIndicator(
+                    color:themeprovider.IsLightMode() ?
+                    AppColors.primaryLightColor : AppColors.yellowColor,
                   ),
                 )
               : Expanded(

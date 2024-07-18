@@ -4,41 +4,41 @@ import 'package:islami_app/My_theme/app_colors.dart';
 import 'package:islami_app/provider/config_provider.dart';
 import 'package:provider/provider.dart';
 
-class LanguageSheet extends StatefulWidget {
-  const LanguageSheet({super.key});
+class ThemeSheet extends StatefulWidget {
+  const ThemeSheet({super.key});
 
   @override
-  State<LanguageSheet> createState() => _LanguageSheetState();
+  State<ThemeSheet> createState() => _ThemeSheetState();
 }
 
-class _LanguageSheetState extends State<LanguageSheet> {
+class _ThemeSheetState extends State<ThemeSheet> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<ConfigProvider>(context);
-    var themeprovider = Provider.of<ConfigThemeProvider>(context);
+    var Themeprovider = Provider.of<ConfigThemeProvider>(context);
     return Container(
-
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           InkWell(
             onTap: (){
-                provider.ChangeLanguage('en');
+                  // change theme to light
+                Themeprovider.ChangeTheme(ThemeMode.light);
             },
             /// Selected language
-            child: provider.appLanguage == 'en' ?
-                    SelectedItem(AppLocalizations.of(context)!.english):
-                    UnselectedItem(AppLocalizations.of(context)!.english),
+            child:  Themeprovider.Theme == ThemeMode.light ?
+                    SelectedItem(AppLocalizations.of(context)!.light_theme):
+                    UnselectedItem(AppLocalizations.of(context)!.light_theme),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           InkWell(
             onTap: (){
-              provider.ChangeLanguage('ar');
+              Themeprovider.ChangeTheme(ThemeMode.dark);
             },
-              child: provider.appLanguage == 'ar' ?
-              SelectedItem(AppLocalizations.of(context)!.arabic):
-              UnselectedItem(AppLocalizations.of(context)!.arabic),
+              child: Themeprovider.IsDarkMode() ?
+              SelectedItem(AppLocalizations.of(context)!.dark_theme):
+              UnselectedItem(AppLocalizations.of(context)!.dark_theme),
           ),
         ],
       ),

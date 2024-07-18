@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/My_theme/app_colors.dart';
+import 'package:islami_app/provider/config_provider.dart';
 import 'package:islami_app/widgets/sura_name.dart';
 import 'package:islami_app/widgets/verse_number.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class QuranTap extends StatelessWidget {
 
 
   @override
   Widget build(BuildContext context) {
+    var themeprovider = Provider.of<ConfigThemeProvider>(context);
     return Container(
       color: Colors.transparent,
       child: Column(
         children: [
           Image.asset('assets/images/quran_logo.png'),
-          const Divider(
-            color: AppColors.primaryLightColor,
+           Divider(
+            color: themeprovider.IsLightMode() ?
+            AppColors.primaryLightColor:AppColors.yellowColor,
             thickness: 3,
           ),
           Row(
@@ -24,28 +28,30 @@ class QuranTap extends StatelessWidget {
               Expanded(
                 child: Text(
                   AppLocalizations.of(context)!.sura_names,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(
+               SizedBox(
                 height: 24,
                 child: VerticalDivider(
-                  color: AppColors.primaryLightColor,
+                  color: themeprovider.IsLightMode() ?
+                  AppColors.primaryLightColor:AppColors.yellowColor,
                   thickness: 3,
                 ),
               ),
               Expanded(
                 child: Text(
                   AppLocalizations.of(context)!.verses,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center,
                 ),
               ),
             ],
           ),
-          const Divider(
-            color: AppColors.primaryLightColor,
+           Divider(
+            color: themeprovider.IsLightMode() ?
+            AppColors.primaryLightColor:AppColors.yellowColor,
             thickness: 3,
           ),
           Expanded(
@@ -64,8 +70,9 @@ class QuranTap extends StatelessWidget {
                         index: index,
                       ),
                     ),
-                    const VerticalDivider(
-                      color: AppColors.primaryLightColor,
+                     VerticalDivider(
+                      color:  themeprovider.IsLightMode() ?
+                      AppColors.primaryLightColor:AppColors.yellowColor,
                       thickness: 3,
                     ),
                     Expanded(
