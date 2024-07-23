@@ -40,6 +40,7 @@ class _ThemeSheetState extends State<ThemeSheet> {
               SelectedItem(AppLocalizations.of(context)!.dark_theme):
               UnselectedItem(AppLocalizations.of(context)!.dark_theme),
           ),
+
         ],
       ),
     );

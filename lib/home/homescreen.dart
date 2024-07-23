@@ -26,18 +26,22 @@ class _HomeScreenState extends State<HomeScreen> {
     var themeprovider = Provider.of<ConfigThemeProvider>(context);
     return Stack(
       children: [
-        themeprovider.IsLightMode()?
-        Image.asset(
+        if (themeprovider.IsLightMode()) Image.asset(
           'assets/images/main_bgimage.png',
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
-        ): Image.asset(
+        ) else if (themeprovider.IsDarkMode())Image.asset(
           'assets/images/bg_dark.png',
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
-        ),
+        )  else Image.asset(
+          'assets/images/bg_green.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ) ,
         Scaffold(
           appBar: AppBar(
             title: Text(

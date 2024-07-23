@@ -7,14 +7,24 @@ import 'package:islami_app/provider/config_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/home/book/book_Details_screen.dart';
 import 'package:islami_app/home/quran/sura_Details_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  final String? saveLango = sharedPreferences.getString('appLanguage');
+  final bool? theme = sharedPreferences.getBool('theme');
   runApp(
-      MultiProvider(providers: [
-        ChangeNotifierProvider(create: (context) => ConfigProvider()),
-        ChangeNotifierProvider(create: (context) => ConfigThemeProvider()),
-      ],
-          child: MyApp())
+      MultiProvider(
+          providers:[
+            ChangeNotifierProvider(create: (context) => ConfigProvider(
+                locale: saveLango ?? 'ar', mode: theme ?? false),
+
+            ),
+            ChangeNotifierProvider(create: (context) => ConfigThemeProvider())
+          ]  ,
+          child:  MyApp()
+      )
   );
 }
 
